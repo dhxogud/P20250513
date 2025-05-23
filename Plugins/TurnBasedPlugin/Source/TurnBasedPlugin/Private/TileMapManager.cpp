@@ -78,6 +78,10 @@ void ATileMapManager::GenerateTileMap(int32 MapWidth, int32 MapHeight)
 
             // 1D 배열에 저장
             TileMap[Y * MapWidth + X] = NewTile;  // 1D 배열로 저장
+
+            bool Result = NewTile->K2_AttachToActor(this, TEXT("Tile%d%d"), EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative,
+                EAttachmentRule::KeepWorld, true);
+            UE_LOG(LogTemp, Warning, TEXT("%s"), (Result ? TEXT("true") : TEXT("false")));
         }
     }
 }
